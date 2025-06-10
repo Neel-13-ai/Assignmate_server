@@ -42,15 +42,15 @@ router.patch("/change-password", verifyToken, changePass);
 router.post(
   "/add-assignment",
   verifyToken,
-  upload.single("filePath"),
   AddAssignment
 );
+
+
 router.get("/get-assignment", verifyToken, getAssignment);
 
 router.put(
   "/update-assignment/:id",
   verifyToken,
-  upload.single("filePath"),
   UpdateAssignment
 );
 
@@ -59,9 +59,7 @@ router.get("/user", verifyToken, userCon);
 router.get("/profile", verifyToken, getUserProfile);
 
 router.get("/user-list", verifyToken, getUser);
-
 router.put("/update-admin/:id", updateUser);
-
 router.get("/alluser", verifyToken, allUser);
 module.exports = router;
 
