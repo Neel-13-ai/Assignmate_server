@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   authCon,
   loginCon,
@@ -10,7 +11,6 @@ const {
   resetPassword,
   getUser,
   changePass,
-  updateAdmin,
   updateUser,
   allUser,
   adminDashboard,
@@ -21,7 +21,6 @@ const { verifyToken } = require("../middleware/authMiddleeware");
 const {
   AddAssignment,
   getAssignment,
-  updateAssingment,
   UpdateAssignment,
 } = require("../controller/assignmentCon");
 const { route } = require("./adminRoutes");
@@ -29,39 +28,30 @@ const { route } = require("./adminRoutes");
 const router = express.Router();
 
 router.get("/", authCon);
-
+// ------------------------------------>>> auth apis
 router.post("/register", register);
 router.post("/login", loginCon);
 
+// ------------------------------------>>> forgot password  apis
 router.post("/forgot-password", sendOtp);
 router.post("/otp", verifyOtp);
 router.post("/reset-password", verifyToken, resetPassword);
-
 router.patch("/change-password", verifyToken, changePass);
 
-router.post(
-  "/add-assignment",
-  verifyToken,
-  AddAssignment
-);
-
-
+// ------------------------------------>>>  apis  for managing assignmate
+router.post("/add-assignment", verifyToken, AddAssignment);
 router.get("/get-assignment", verifyToken, getAssignment);
+router.put("/update-assignment/:id", verifyToken, UpdateAssignment);
 
-router.put(
-  "/update-assignment/:id",
-  verifyToken,
-  UpdateAssignment
-);
-
+// ------------------------------------>>>  apis for the user and profile management
 router.get("/user", verifyToken, userCon);
 
-router.get("/profile", verifyToken, getUserProfile);
-
+router.get("/admin-dashboard", verifyToken, adminDashboard);
 router.get("/user-list", verifyToken, getUser);
 router.put("/update-admin/:id", updateUser);
 router.get("/alluser", verifyToken, allUser);
-module.exports = router;
 
-router.get("/admin-dashboard", verifyToken, adminDashboard);
+router.get("/profile", verifyToken, getUserProfile);
 router.get("/students", verifyToken, studentDashboard);
+
+module.exports = router;
