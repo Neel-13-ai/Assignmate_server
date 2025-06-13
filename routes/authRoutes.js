@@ -16,7 +16,7 @@ const {
   adminDashboard,
   studentDashboard,
 } = require("../controller/authCon");
-const { upload } = require("../middleware/fileMid");
+
 const { verifyToken } = require("../middleware/authMiddleeware");
 const {
   AddAssignment,
