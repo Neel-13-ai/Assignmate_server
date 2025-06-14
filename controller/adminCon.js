@@ -2,7 +2,6 @@ const{ PrismaClient } = require("@prisma/client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const addAdmin = async (req, res) => {
