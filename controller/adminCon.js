@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const addAdmin = async (req, res) => {
@@ -68,8 +69,7 @@ const sendPassToEmail = async (email, password) => {
     },
   });
 
-  console.log(process.env.EMAIL_USER,process.env.EMAIL_PASS);
-  
+  console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS);
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -105,6 +105,5 @@ const sendPassToEmail = async (email, password) => {
     console.error("Error sending email:", error);
   }
 };
-
 
 module.exports = { addAdmin };
