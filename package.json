@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prisma:generate": "prisma generate --schema=../prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema=../prisma/schema.prisma",
+    "build": "npm run prisma:push && npm run prisma:generate",
     "start": "node index.js"
   },
   "keywords": [],
