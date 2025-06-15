@@ -7,6 +7,7 @@
     "prisma:generate": "prisma generate --schema=../prisma/schema.prisma",
     "prisma:push": "prisma db push --schema=../prisma/schema.prisma",
     "build": "npm run prisma:push && npm run prisma:generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "start": "node index.js"
   },
   "keywords": [],
